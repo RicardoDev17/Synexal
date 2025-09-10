@@ -11,7 +11,7 @@
   gap: 2rem;
   max-width: 1200px;
   margin: auto;
-  text-align: center; /* centrado para simetría */
+  text-align: center;
 }
 
 .footer-brand h2 {
@@ -51,10 +51,9 @@
   color: #00bfa6;
 }
 
-/* Íconos sociales */
 .footer-socials .social-icons {
   display: flex;
-  justify-content: center; /* centrados */
+  justify-content: center;
   gap: 1rem;
   margin-top: 0.5rem;
 }
