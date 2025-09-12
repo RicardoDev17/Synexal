@@ -6,9 +6,7 @@ export default function About() {
 
 const team = [
   { name: "Ricardo Pérez", role: "CEO & Founder", img: tituloImg },
-  { name: "María López", role: "Project Manager", img: "assets/team2.jpg" },
-  { name: "Juan García", role: "Lead Developer", img: "assets/team3.jpg" },
-  { name: "Ana Torres", role: "UX/UI Designer", img: "assets/team4.jpg" }
+  { name: "David Figueroa", role: "CEO & Founder", img: "assets/team2.jpg" },
 ];
 
   const [current, setCurrent] = useState(0);
