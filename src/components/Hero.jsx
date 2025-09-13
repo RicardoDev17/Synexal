@@ -19,7 +19,7 @@ export default function Hero() {
   }, [currentIndex, fullText]);
 
   return (
-    <section className="hero">
+    <section className="hero" id = "inicio">
       <div className="overlay"></div>
       <div className="hero-content">
         <h1 className="typing-text">

@@ -6,6 +6,16 @@
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   height: 5em;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .nav-links {
@@ -23,15 +33,64 @@
   color: #333;
   font-weight: 500;
   transition: color 0.3s ease;
-  
+  position: relative;
 }
 
 .nav-links a:hover {
   color: #007bff;
 }
 
-.logo img {
-  height: 100%;  
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-img {
+  height: 70%;
+  max-height: 45px;
   width: auto;
   display: block;
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    padding-left: 5em;
+    padding-right: 2em;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    padding: 1em 0;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .logo-img {
+    height: 40px;
+    margin-bottom: 0.5em;
+  }
 }
