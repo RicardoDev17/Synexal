@@ -6,7 +6,7 @@ import soporteIcon from "../assets/soporte.png";
 
 export default function Services() {
   return (
-    <section className="services-section">
+    <section className="services-section" id = "servicios">
       <h2>Nuestros Servicios</h2>
       <div className="services-grid">
         
