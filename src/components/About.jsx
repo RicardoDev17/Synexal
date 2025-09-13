@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "../styles/About.css";
 import tituloImg from "../assets/titulo.jpg";
+import tituloImgJ from "../assets/tituloJasso.jpg";
 
 export default function About() {
 
 const team = [
-  { name: "Ricardo Pérez", role: "CEO & Founder", img: tituloImg },
-  { name: "David Figueroa", role: "CEO & Founder", img: "assets/team2.jpg" },
+  { name: "Ricardo Pérez", role: "CEO y cofundador", img: tituloImg },
+  { name: "David Figueroa", role: "CEO y cofundador", img: tituloImgJ },
 ];
 
   const [current, setCurrent] = useState(0);
@@ -40,7 +41,7 @@ const team = [
             Nuestro compromiso es impulsar el crecimiento de empresas y personas
             a través de la innovación, la creatividad y la excelencia tecnológica.
           </p>
-          <a href="#contacto" className="btn-explore">Conócenos más</a>
+          <a href="#contacto" className="btn-explore">Contáctanos</a>
         </div>
 
         <div className="team-carousel">
