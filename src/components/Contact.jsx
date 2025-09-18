@@ -1,70 +1,74 @@
-import React from "react";
-import "../styles/Contact.css"; // <-- aquí irán los estilos
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import "../styles/Contact.css";
 
-export default function Contact() {
+export default function ContactForm() {
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_4w02zkg",   
+        "template_x53jade", 
+        form.current,       
+        "tAEeHVwv2E6vTMQiY" 
+      )
+      .then(
+        (result) => {
+          alert("Correo enviado correctamente ✅");
+          console.log("Success:", result.text);
+          form.current.reset();
+        },
+        (error) => {
+          alert("Error al enviar el correo ❌");
+          console.error("Error details:", error.text);
+        }
+      )
+      .finally(() => setLoading(false));
+  };
+
   return (
-    <div className="contact-container" id="contacto">
-      <div className="contact-header">
-        <h1>Contacto</h1>
-        <p class="description">
-          ¿Tienes alguna pregunta o necesitas ayuda? Estamos aquí para ti.
-          Contáctanos y te responderemos lo antes posible.
-        </p>
-      </div>
+    <section id="contacto" className="contact-section">
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="p-4 max-w-md mx-auto border rounded-lg shadow"
+      >
+        <h2 className="text-xl font-bold mb-4">Enviar un correo</h2>
 
-      <div className="info">
-        <div className="card">
-          <div className="card-header">
-            <h2>Información de contacto</h2>
-            <p class ="description">Encuentra otras formas de ponerte en contacto con nosotros.</p>
-          </div>
-          <div className="card-content">
-            <div className="info-item">
-              <span className="icon">📧</span>
-              <div>
-                <h3>Email</h3>
-                <p>contacto@tuempresa.com</p>
-                <p>soporte@tuempresa.com</p>
-              </div>
-            </div>
-
-            <div className="info-item">
-              <span className="icon">📞</span>
-              <div>
-                <h3>Teléfono</h3>
-                <p>+34 123 456 789</p>
-                <p>+34 987 654 321</p>
-              </div>
-            </div>
-
-            <div className="info-item">
-              <span className="icon">⏰</span>
-              <div>
-                <h3>Horario</h3>
-                <p>
-                  Lunes - Viernes: 9:00 - 18:00<br />
-                  Sábados: Cerrado<br />
-                  Domingos: Cerrado
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Ayuda inmediata */}
-        <div className="card">
-          <div className="card-header">
-            <h2>¿Necesitas ayuda inmediata?</h2>
-          </div>
-          <div className="card-content">
-            <p>Si tienes una consulta urgente, llámanos directamente.</p>
-            <div className="btn-group">
-              <button className="btn">📞 Llamar ahora</button>
-              <button className="btn">📧 Email directo</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        <input
+          type="text"
+          name="name"
+          placeholder="Tu nombre"
+          required
+          className="w-full mb-3 p-2 border rounded"
+        />
+        <input
+          type="email"
+          name="user_email"
+          placeholder="Tu correo"
+          required
+          className="w-full mb-3 p-2 border rounded"
+        />
+        <textarea
+          name="message"
+          placeholder="Escribe tu mensaje"
+          required
+          rows="4"
+          className="w-full mb-3 p-2 border rounded"
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+        >
+          {loading ? "Enviando..." : "Enviar"}
+        </button>
+      </form>
+    </section>
   );
 }
