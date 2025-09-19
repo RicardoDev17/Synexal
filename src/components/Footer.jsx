@@ -24,10 +24,9 @@ export default function Footer() {
         <div className="footer-socials">
           <h4>Síguenos</h4>
           <div className="social-icons">
-            <a href="#"><FaFacebook /></a>
-            <a href="#"><FaTwitter /></a>
+            <a href="https://www.facebook.com/profile.php?id=61580929419060&locale=es_LA"><FaFacebook /></a>
             <a href="#"><FaLinkedin /></a>
-            <a href="#"><FaInstagram /></a>
+            <a href="https://www.instagram.com/synexalcode/"><FaInstagram /></a>
           </div>
         </div>
 
