@@ -69,7 +69,6 @@
   display: block;
 }
 
-/* Menú Hamburguesa (oculto por defecto) */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -91,7 +90,6 @@
   transition: all 0.3s ease;
 }
 
-/* Media Queries para Responsividad */
 @media (max-width: 1200px) {
   .nav-links {
     padding-left: 10em;
@@ -132,7 +130,6 @@
     margin-right: 10%;
   }
   
-  /* Estilos cuando el menú está abierto */
   .hamburger.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
   }
