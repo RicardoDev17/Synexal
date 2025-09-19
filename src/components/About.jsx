@@ -4,11 +4,10 @@ import tituloImg from "../assets/titulo.jpg";
 import tituloImgJ from "../assets/tituloJasso.jpg";
 
 export default function About() {
-
-const team = [
-  { name: "Ricardo Pérez", role: "CEO y cofundador", img: tituloImg },
-  { name: "David Figueroa", role: "CEO y cofundador", img: tituloImgJ },
-];
+  const team = [
+    { name: "Ricardo Pérez", role: "CEO y cofundador", img: tituloImg },
+    { name: "David Figueroa", role: "CEO y cofundador", img: tituloImgJ },
+  ];
 
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -47,7 +46,7 @@ const team = [
         <div className="team-carousel">
           <h2 className="title">Nuestro <span>Equipo</span></h2>
           <div className="carousel-container">
-            <button className="carousel-btn left" onClick={() => changeSlide("prev")}>❮</button>
+            <button className="carousel-btn left" onClick={() => changeSlide("prev")} aria-label="Slide anterior">❮</button>
 
             <div className={`carousel-slide card ${animating ? "fade-out" : "fade-in"}`}>
               <img src={team[current].img} alt={team[current].name} />
@@ -55,7 +54,27 @@ const team = [
               <p>{team[current].role}</p>
             </div>
 
-            <button className="carousel-btn right" onClick={() => changeSlide("next")}>❯</button>
+            <button className="carousel-btn right" onClick={() => changeSlide("next")} aria-label="Slide siguiente">❯</button>
+          </div>
+          
+          {/* Indicadores para móviles */}
+          <div className="carousel-indicators">
+            {team.map((_, index) => (
+              <button
+                key={index}
+                className={`indicator ${current === index ? "active" : ""}`}
+                onClick={() => {
+                  if (!animating) {
+                    setAnimating(true);
+                    setTimeout(() => {
+                      setCurrent(index);
+                      setAnimating(false);
+                    }, 400);
+                  }
+                }}
+                aria-label={`Ir al slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
